@@ -22,7 +22,7 @@ O diferencial deste código é o uso de **ponteiros em C++**, permitindo uma est
 
 ---
 
-## ⚙️ Componentes Utilizados
+## Componentes Utilizados
 
 | Componente             | Quantidade | Especificação / Observação           |
 | ---------------------- | ---------- | ------------------------------------ |
@@ -38,7 +38,7 @@ O diferencial deste código é o uso de **ponteiros em C++**, permitindo uma est
 
 ---
 
-## 🔌 Esquema de Ligação
+## Esquema de Ligação
 
 Cada LED é conectado **em série** com um resistor, conforme o diagrama abaixo:
 
@@ -60,7 +60,7 @@ Legenda:
 
 ```cpp
 /*
-  Simulação de semáforo com 3 LEDs usando ponteiros.
+  simulação de semáforo com 3 LEDs usando ponteiros.
   LEDs: vermelho (pino 13), amarelo (pino 12), verde (pino 11)
 */
 
@@ -68,25 +68,25 @@ Legenda:
 #define ledAmarelo  12
 #define ledVerde    11
 
-// Criação de um array com os pinos
+//criação de um array com os pinos
 int leds[] = { ledVermelho, ledAmarelo, ledVerde };
 
-// Criação de um array com os tempos de cada LED (em milissegundos)
+//criação de um array com os tempos de cada LED (em milissegundos)
 unsigned long tempos[] = { 6000, 2000, 4000 }; // vermelho, amarelo, verde
 
-// Ponteiros para os arrays
+//ponteiros para os arrays
 int *pLeds = leds;
 unsigned long *pTempos = tempos;
 
 void setup() {
-  // Inicializa cada LED como saída, usando o ponteiro
+  //inicializa cada LED como saída, usando o ponteiro
   for (int i = 0; i < 3; i++) {
     pinMode(*(pLeds + i), OUTPUT);
     digitalWrite(*(pLeds + i), LOW);
   }
 }
 
-// Função genérica para acender qualquer LED
+//função genérica para acender qualquer LED
 void acenderLed(int *pino, unsigned long *tempo) {
   digitalWrite(*pino, HIGH);
   delay(*tempo);
